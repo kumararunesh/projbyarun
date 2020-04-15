@@ -20,7 +20,7 @@ public class GreetingController {
     @PostMapping("/greeting")
     public String greetingSubmit(@ModelAttribute Greeting greeting) {
     	
-    	final String uri = "http://localhost:8090/seatconfig/"+greeting.getContent() ;
+    	final String uri = "https://railarunapi.herokuapp.com/seatconfig/"+greeting.getContent() ;
 
 	    RestTemplate restTemplate = new RestTemplate();
 	    String result1 = restTemplate.getForObject(uri, String.class);

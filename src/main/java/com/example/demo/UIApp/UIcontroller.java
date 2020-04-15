@@ -1,5 +1,7 @@
 package com.example.demo.UIApp;
 
+import com.example.demo.SeatConfigService.SeatConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,9 @@ import com.example.demo.greetingService.Greeting;
 @Controller
 public class UIcontroller {
 
+
+
+
 	 @GetMapping("/seat")
 	    public String greetingForm(Model model) {
 	        model.addAttribute("seat", new Seat());
@@ -22,8 +27,9 @@ public class UIcontroller {
 	 @PostMapping("/seat")
 	    public String greetingSubmit(@ModelAttribute Seat seat) {
 	    	
-	    	final String uri = "http://localhost:8090/seatconfig/"+seat.getSeatNo();
-		 /*"http://kumararunesh211994-eval-prod.apigee.net/railseats/"+seat.getSeatNo() ;*/
+	    	final String uri = "https://railarunapi.herokuapp.com/seatconfig/"+seat.getSeatNo();
+		 /*"http://kumararunesh211994-eval-prod.apigee.net/railseats/"+seat.getSeatNo() ;
+		 * http://localhost:8090*/
 
 		    RestTemplate restTemplate = new RestTemplate();
 		    Seat seat1 = restTemplate.getForObject(uri, Seat.class);
